@@ -1,12 +1,13 @@
-name: Contributor List
 on:
-  push:
-    branches:
-      - master
+    push:
+        branches:
+            - main
 jobs:
-  contributor_list:
-    name: Contributor List
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: docker://cjdenio/contributor_list:latest
+    contrib-readme-job:
+        runs-on: ubuntu-latest
+        name: A job to automate contrib in readme
+        steps:
+            - name: Contribute List
+              uses: akhilmhdh/contributors-readme-action@v2.3.6
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
